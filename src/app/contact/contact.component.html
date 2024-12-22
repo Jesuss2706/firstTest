@@ -1,0 +1,34 @@
+<h1>Contact Form</h1>
+<form  (ngSubmit)="onSumit(ContactForm)" #ContactForm="ngForm">
+  <div class="mb-4">
+    <label  for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+    <div [hidden]="name.valid || name.pristine" class="invalid-feedback">This field is required</div>
+
+  </div>
+  <div class="mb-4 form-check">
+    <label  for="checkAge" class="form-label">Are you over 18 years of age?</label>
+    <input type="checkbox" class="form-check-input" id="checkAge" name="checkAge" [(ngModel)]="model.checkAge" #checkAge="ngModel" required>
+    <div [hidden]="checkAge.valid || checkAge.pristine" class="invalid-feedback"> This field is required </div>
+  </div>
+  <div class="mb-4">
+    <label  for="departmen" class="form-label">Department</label>
+    <select name="department" id="department" class="form-select" [(ngModel)]="model.department">
+      <option selected>Choose...</option>
+      <option value="marketing">marketing</option>
+      <option value="sales">sales</option>
+      <option value="other">other</option>
+    </select>
+  </div>
+  <div class="mb-4">
+    <label  for="comment" class="form-label">Comment</label>
+    <textarea name="comment" id="comment" rows="5" class="form-control" placeholder="Enter comment..." [(ngModel)]="model.comment" #comment="ngModel" required></textarea>
+    <div [hidden]="comment.valid || comment.pristine" class="invalid-feedback"> This field is required </div>
+  </div>
+  <div class="float-end d-grid  gap-2 col-3">
+    <button type="submit" class="btn btn-info btn-lg" [disabled]="ContactForm.invalid">Submit</button>
+  </div>
+
+</form>
+
+<pre>{{ContactForm.value | json}}</pre>

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-md-4">
+
+      <div class="row">
+        <div class="col-md-12">
+          <app-juasjuas></app-juasjuas>
+
+          <p>{{ title }} de mi</p>
+
+          <p>Total {{2+3}}</p>
+
+          <img class="imgCat" src="{{url}}">
+          <br>
+
+          <p *ngIf="name">Hello {{name}}</p>
+          <input type="text" [(ngModel)]="name" placeholder="Name">
+
+          <p>My birthDay is {{'02/27/2006, 4:00:00 PM' | date:'medium'}}</p>
+          <p>Currency: {{'1000000' | currency: 'COP'}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mt-2">
+      <div class="my-3">
+        <app-form-new-item (newItem)="createNewColor($event)" [label]="'color'"
+          [className]="'btn-danger'"></app-form-new-item>
+      </div>
+
+      <ul>
+        <app-colors-list *ngFor="let color of colors" (colorClickedEvent)="onColorClicked($event)" [color]="color"
+        [selectedColor]="selectedColor"></app-colors-list>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <div *ngIf="selectedColor">
+        <p>El color es: {{selectedColor}}</p>
+        <!--<button  (click) = "clearSelected()">Clear Seletion</button>-->
+        <app-button (click)=" clearSelected()" [color]="'blue'" [label]="'Clear Selection'"
+          [selectedColor]="selectedColor"></app-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <app-contact></app-contact>
+    </div>
+    <div class="col-3">
+      data
+    </div>
+  </div>
+</div>
+
+<p>This is the app component</p>
